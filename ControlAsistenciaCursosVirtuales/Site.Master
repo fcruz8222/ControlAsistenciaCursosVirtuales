@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ControlAsistenciaCursosVirtuales.Site" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Control de Asistencia - Cursos Virtuales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+<form id="form1" runat="server">
+    <div class="topbar">
+        <div class="brand">Control de Asistencia</div>
+
+        <div class="userbox">
+            <asp:Label ID="lblUser" runat="server" />
+            <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" CssClass="link" Text="Cerrar sesión" Visible="false" />
+        </div>
+    </div>
+
+    <div class="menu">
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Home.aspx" Text="Inicio" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Cursos/Cursos.aspx" Text="Cursos" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Asistencia/Registrar.aspx" Text="Registrar Asistencia" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Reportes/Estadisticas.aspx" Text="Estadísticas" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Admin/ConfigValidacion.aspx" Text="Validación IP/Ubicación" />
+        <!--<asp:HyperLink runat="server" NavigateUrl="~/Pages/Auth/Login.aspx" Text="Login" />-->
+    </div>
+
+    <div class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+</form>
+</body>
+</html>
