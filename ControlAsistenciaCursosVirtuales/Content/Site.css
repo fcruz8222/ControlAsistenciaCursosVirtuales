@@ -1,4 +1,6 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿* {
+    box-sizing: border-box;
+}
 body {
     font-family: Arial;
     margin: 0;
@@ -48,9 +50,20 @@ body {
 
 .card {
     background: #fff;
+    width: 100%;
+    max-width: 420px;
     border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.card-title{
+    margin: 0 0 16px 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #111827;
 }
 
 .grid {
@@ -59,6 +72,7 @@ body {
 
 .field {
     margin-bottom: 10px;
+
 }
 
 label {
@@ -67,21 +81,96 @@ label {
 }
 
 input, select {
-    padding: 8px;
-    width: 320px;
+    padding: 10px 12px;
+    border: 1px solid #c6c2c2;
+    border-radius: 8px;
+    outline: none;
+    transition: box-shadow 0.1s, border-color 0.1s;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
+    input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59,130,246,.25);
+    }
+
 .btn {
-    padding: 10px 14px;
+    padding: 10px 10px;
     background: #2563eb;
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    width: 100%;
 }
 
 .error {
     color: #b91c1c;
 }
 
+/* ===== Fondo general ===== */
+.login-body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+}
+
+/* ===== Contenedor centrado ===== */
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Caja del login ===== */
+.login-box {
+    width: 420px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== Título ===== */
+.login-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+/* ===== Grupos ===== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ===== Inputs ===== */
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+/* ===== Botón ===== */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .login-btn:hover {
+        background: linear-gradient(90deg, #1d4ed8, #1e40af);
+    }

@@ -23,7 +23,6 @@
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Asistencia/Registrar.aspx" Text="Registrar Asistencia" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Reportes/Estadisticas.aspx" Text="Estadísticas" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Admin/ConfigValidacion.aspx" Text="Validación IP/Ubicación" />
-        <!--<asp:HyperLink runat="server" NavigateUrl="~/Pages/Auth/Login.aspx" Text="Login" />-->
     </div>
 
     <div class="container">
