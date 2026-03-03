@@ -4,10 +4,11 @@
 <head runat="server">
     <title>Control de Asistencia - Cursos Virtuales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
 <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="topbar">
         <div class="brand">Control de Asistencia</div>
 
@@ -19,10 +20,9 @@
 
     <div class="menu">
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Home.aspx" Text="Inicio" />
-        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Cursos/Cursos.aspx" Text="Cursos" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Cursos/ListarCursos.aspx" Text="Cursos" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Asistencia/Registrar.aspx" Text="Registrar Asistencia" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Reportes/Estadisticas.aspx" Text="Estadísticas" />
-        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Admin/ConfigValidacion.aspx" Text="Validación IP/Ubicación" />
     </div>
 
     <div class="container">

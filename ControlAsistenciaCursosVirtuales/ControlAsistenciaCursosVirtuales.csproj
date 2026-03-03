@@ -132,7 +132,7 @@
     <Content Include="Pages\Admin\ConfigValidacion.aspx" />
     <Content Include="Pages\Asistencia\Registrar.aspx" />
     <Content Include="Pages\Auth\Login.aspx" />
-    <Content Include="Pages\Cursos\Cursos.aspx" />
+    <Content Include="Pages\Cursos\ListarCursos.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Reportes\Estadisticas.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -218,12 +218,12 @@
     <Compile Include="Pages\Auth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Cursos\Cursos.aspx.cs">
-      <DependentUpon>Cursos.aspx</DependentUpon>
+    <Compile Include="Pages\Cursos\ListarCursos.aspx.cs">
+      <DependentUpon>ListarCursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Cursos\Cursos.aspx.designer.cs">
-      <DependentUpon>Cursos.aspx</DependentUpon>
+    <Compile Include="Pages\Cursos\ListarCursos.aspx.designer.cs">
+      <DependentUpon>ListarCursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
