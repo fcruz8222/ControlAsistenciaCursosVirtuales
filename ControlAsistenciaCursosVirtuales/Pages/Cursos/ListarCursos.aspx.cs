@@ -77,6 +77,39 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Cursos
                 lblModalTitle.Text = "Editar Curso (ID: " + idCurso + ")";
                 AbrirModal();
             }
+
+            if (e.CommandName == "BORRAR")
+            {
+                int idCurso = int.Parse(e.CommandArgument.ToString());
+
+                // 1) Verificar si existen asistencias
+                string sqlCount = @"SELECT COUNT(1) FROM dbo.RegistroAsistencia WHERE IdCurso = @IdCurso;";
+                object obj = Db.Scalar(sqlCount, new SqlParameter("@IdCurso", idCurso));
+
+                int totalAsistencias = 0;
+                if (obj != null && obj != DBNull.Value)
+                    totalAsistencias = Convert.ToInt32(obj);
+
+                if (totalAsistencias > 0)
+                {
+                    // Si existen asistencias desactiva el curso
+                    string sqlUpdate = @"UPDATE dbo.Cursos SET Status = 'INACTIVO' WHERE IdCurso = @IdCurso;";
+                    Db.Execute(sqlUpdate, new SqlParameter("@IdCurso", idCurso));
+
+                    lblGridMsg.Text = "El curso tiene asistencias registradas, se desactivó.";
+                }
+                else
+                {
+                    // Sino existen asistencias elimina el curso por completo
+                    string sqlDelete = @"DELETE FROM dbo.Cursos WHERE IdCurso = @IdCurso;";
+                    Db.Execute(sqlDelete, new SqlParameter("@IdCurso", idCurso));
+
+                    lblGridMsg.Text = "Curso eliminado correctamente.";
+                }
+
+                BindGrid(txtBuscar.Text.Trim());
+                return;
+            }
         }
 
         private void CargarCursoEnModal(int idCurso)
@@ -107,7 +140,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Cursos
             txtDuracion.Text = Convert.ToDecimal(r["DuracionHoras"]).ToString(CultureInfo.InvariantCulture);
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+            protected void btnGuardar_Click(object sender, EventArgs e)
         {
             Page.Validate();
             if (!Page.IsValid)
