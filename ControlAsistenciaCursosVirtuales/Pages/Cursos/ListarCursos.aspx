@@ -72,6 +72,17 @@
                                 CommandName="EDITAR"
                                 CommandArgument='<%# Eval("IdCurso") %>'
                                 CausesValidation="false" />
+                            
+                            
+                    <asp:LinkButton ID="btnBorrar" runat="server"
+                                Text="Borrar"
+                                CssClass="btn btn-sm btn-secondary"
+                                CommandName="BORRAR"
+                                CommandArgument='<%# Eval("IdCurso") %>'
+                                CausesValidation="false"
+                                OnClientClick="return confirm('¿Seguro? Si el curso tiene asistencias, se desactivará; si no, se eliminará.');"
+                                style="margin-left:8px;" />
+
                         </ItemTemplate>
                     </asp:TemplateField>
 
