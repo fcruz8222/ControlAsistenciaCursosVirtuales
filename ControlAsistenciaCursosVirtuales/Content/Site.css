@@ -82,6 +82,7 @@ label {
 }
 
 input, select, textarea {
+    width: 100%;
     max-width: 100%;
     padding: 10px 12px;
     border: 1px solid #c6c2c2;
@@ -235,6 +236,7 @@ input, select, textarea {
     .modal-close:hover {
         color: #111827;
     }
+
 .modal-footer {
     margin-top: 20px;
     display: flex;
@@ -242,10 +244,10 @@ input, select, textarea {
     gap: 10px;
 }
 
-.modal-footer .btn,
-.modal-footer .btn-secondary {
-    width: auto !important;
-}
+    .modal-footer .btn,
+    .modal-footer .btn-secondary {
+        width: auto !important;
+    }
 
 /* GRIDVIEW (TABLE)  */
 .table {
@@ -284,6 +286,7 @@ input, select, textarea {
     .table tr:hover td {
         background: #bbdcf5;
     }
+
     .table .btn-sm {
         padding: 7px 10px;
         font-size: 13px;
@@ -321,25 +324,25 @@ input, select, textarea {
     flex-wrap: wrap;
 }
 
-    .toolbar-rigth {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
+.toolbar-rigth {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
     .toolbar-rigth input {
         height: 38px;
-
     }
 
-    .toolbar-left .btn-sm {
-        height: 38px;
-        background: #148a26;
-    }
+.toolbar-left .btn-sm {
+    height: 38px;
+    background: #38c047;
+}
 
 .search {
     width: 280px;
     max-width: 100%;
+    s
 }
 
 .search-group {
@@ -350,4 +353,15 @@ input, select, textarea {
 
 .search-input {
     width: 260px;
+}
+
+.success-message {
+    display: block;
+    margin: 12px 0;
+    padding: 10px 12px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    font-size: 14px;
 }

@@ -23,7 +23,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
         //se creoel metodo para cargar los maestros activos en el panel maetsros
         private void CargarMaestrosActivos()
         {
-            string conexion = "Data Source=ZAVALETA\\SQLEXPRESS01;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
 
             using (SqlConnection con = new SqlConnection(conexion))
             {
@@ -40,7 +40,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
         // se creo el metodo para cargar y poder modificar o eliminar los maestros activos
         private void CargarMaestrosEditar()
         {
-            string conexion = "Data Source=ZAVALETA\\SQLEXPRESS01;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
 
             using (SqlConnection con = new SqlConnection(conexion))
             {
@@ -80,7 +80,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
             string area = ((TextBox)row.Cells[2].Controls[0]).Text;
             string status = ((TextBox)row.Cells[3].Controls[0]).Text;
 
-            string conexion = "Data Source=ZAVALETA\\SQLEXPRESS01;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
 
             using (SqlConnection con = new SqlConnection(conexion))
             {
@@ -106,7 +106,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
         {
             int idMaestro = Convert.ToInt32(gvMaestrosEditar.DataKeys[e.RowIndex].Value);
 
-            string conexion = "Data Source=ZAVALETA\\SQLEXPRESS01;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
 
             using (SqlConnection con = new SqlConnection(conexion))
             {
@@ -159,7 +159,7 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string conexion = "Data Source=ZAVALETA\\SQLEXPRESS01;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
 
             using (SqlConnection con = new SqlConnection(conexion))
             {

@@ -20,7 +20,8 @@
 
     <div class="menu">
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Home.aspx" Text="Inicio" />
-         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Maestros/RegistroMaestros.aspx" Text="Maestros" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Usuarios/Usuarios.aspx" Text="Usuarios" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Pages/Maestros/RegistroMaestros.aspx" Text="Maestros" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Cursos/ListarCursos.aspx" Text="Cursos" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Asistencia/Registrar.aspx" Text="Registrar Asistencia" />
         <asp:HyperLink runat="server" NavigateUrl="~/Pages/Reportes/Estadisticas.aspx" Text="Estadísticas" />

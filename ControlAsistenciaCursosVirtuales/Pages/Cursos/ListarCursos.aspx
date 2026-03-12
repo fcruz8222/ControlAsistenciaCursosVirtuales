@@ -109,41 +109,81 @@
         <div class="field">
             <label>Tipo de Curso</label>
             <asp:DropDownList ID="ddlTipoCurso" runat="server" />
+            <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="ddlTipoCurso"
+                        ErrorMessage="Ingrese Tipo"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Nombre</label>
             <asp:TextBox ID="txtNombre" runat="server" />
+            <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="txtNombre"
+                        ErrorMessage="Ingrese Nombre"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Descripción</label>
             <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Rows="3" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="txtDescripcion"
+                        ErrorMessage="Ingrese Descripcion"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Maestro</label>
             <asp:DropDownList ID="ddlMaestro" runat="server" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="ddlMaestro"
+                        ErrorMessage="Seleccione Maestro"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Status</label>
             <asp:DropDownList ID="ddlStatus" runat="server" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="ddlStatus"
+                        ErrorMessage="Seleccione Status"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Fecha</label>
             <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="txtFecha"
+                        ErrorMessage="Ingrese Fecha"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Hora</label>
             <asp:TextBox ID="txtHora" runat="server" TextMode="Time" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="txtHora"
+                        ErrorMessage="Ingrese Hora"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <div class="field">
             <label>Duración</label>
             <asp:TextBox ID="txtDuracion" runat="server" />
+                        <asp:RequiredFieldValidator runat="server"
+                        ControlToValidate="txtDuracion"
+                        ErrorMessage="Ingrese Duracion"
+                        CssClass="error"
+                        Display="Dynamic" />
         </div>
 
         <asp:Label ID="lblModalMsg" runat="server" CssClass="error" />
