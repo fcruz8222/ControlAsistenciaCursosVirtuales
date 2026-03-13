@@ -23,37 +23,22 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
         //se creoel metodo para cargar los maestros activos en el panel maetsros
         private void CargarMaestrosActivos()
         {
-            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT IdMaestro, Nombre, Area, Status FROM Maestros WHERE Status = 'Activo'";
 
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                string query = "SELECT IdMaestro, Nombre, Area, Status FROM Maestros WHERE Status = 'Activo'";
+            DataTable dt = Db.Query(query);
 
-                SqlDataAdapter da = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                gvMaestrosActivos.DataSource = dt;
-                gvMaestrosActivos.DataBind();
-            }
+            gvMaestrosActivos.DataSource = dt;
+            gvMaestrosActivos.DataBind();
         }
         // se creo el metodo para cargar y poder modificar o eliminar los maestros activos
         private void CargarMaestrosEditar()
         {
-            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT IdMaestro, Nombre, Area, Status FROM Maestros";
 
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                string query = "SELECT IdMaestro, Nombre, Area, Status FROM Maestros";
+            DataTable dt = Db.Query(query);
 
-                SqlDataAdapter da = new SqlDataAdapter(query, con);
-
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                gvMaestrosEditar.DataSource = dt;
-                gvMaestrosEditar.DataBind();
-            }
+            gvMaestrosEditar.DataSource = dt;
+            gvMaestrosEditar.DataBind();
         }
         //metodo para editar registros se activa al dar click en editar
         protected void gvMaestrosEditar_RowEditing(object sender, GridViewEditEventArgs e)
@@ -70,57 +55,70 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
 
 
         protected void gvMaestrosEditar_RowUpdating(object sender, GridViewUpdateEventArgs e)
-            // este evento guarda los cambios cuando se modifico algun registro
+        // este evento guarda los cambios cuando se modifico algun registro
+
+
         {
             int idMaestro = Convert.ToInt32(gvMaestrosEditar.DataKeys[e.RowIndex].Value);
 
             GridViewRow row = gvMaestrosEditar.Rows[e.RowIndex];
 
-            string nombre = ((TextBox)row.Cells[1].Controls[0]).Text;
-            string area = ((TextBox)row.Cells[2].Controls[0]).Text;
-            string status = ((TextBox)row.Cells[3].Controls[0]).Text;
+            string nombre = ((TextBox)row.Cells[1].Controls[0]).Text.Trim();
+            string area = ((TextBox)row.Cells[2].Controls[0]).Text.Trim();
+            string status = ((TextBox)row.Cells[3].Controls[0]).Text.Trim();
 
-            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string query = @"UPDATE Maestros
+                     SET Nombre = @Nombre,
+                         Area = @Area,
+                         Status = @Status
+                     WHERE IdMaestro = @IdMaestro";
 
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                string query = "UPDATE Maestros SET Nombre=@Nombre, Area=@Area, Status=@Status WHERE IdMaestro=@IdMaestro";
-
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@Nombre", nombre);
-                cmd.Parameters.AddWithValue("@Area", area);
-                cmd.Parameters.AddWithValue("@Status", status);
-                cmd.Parameters.AddWithValue("@IdMaestro", idMaestro);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
+            Db.Execute(query,
+                new SqlParameter("@Nombre", nombre),
+                new SqlParameter("@Area", area),
+                new SqlParameter("@Status", status),
+                new SqlParameter("@IdMaestro", idMaestro)
+            );
 
             gvMaestrosEditar.EditIndex = -1;
             CargarMaestrosEditar();
+            CargarMaestrosActivos();
         }
+       
 
         protected void gvMaestrosEditar_RowDeleting(object sender, GridViewDeleteEventArgs e)
+       
+            
             //este evento elimina cuando selecionamos un registro y le damos eliminar
+
         {
+
             int idMaestro = Convert.ToInt32(gvMaestrosEditar.DataKeys[e.RowIndex].Value);
 
-            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "DELETE FROM Maestros WHERE IdMaestro = @IdMaestro";
 
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                string query = "DELETE FROM Maestros WHERE IdMaestro=@IdMaestro";
-
-                SqlCommand cmd = new SqlCommand(query, con);
-
-                cmd.Parameters.AddWithValue("@IdMaestro", idMaestro);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
+            Db.Execute(query,
+                new SqlParameter("@IdMaestro", idMaestro)
+            );
 
             CargarMaestrosEditar();
+            CargarMaestrosActivos();
+        }
+      //se agrego este m,etodo de doble validacion para confirmar la eliminacion de un registro 
+        protected void gvMaestrosEditar_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                foreach (Control control in e.Row.Cells[e.Row.Cells.Count - 1].Controls)
+                {
+                    LinkButton btn = control as LinkButton;
+
+                    if (btn != null && btn.CommandName == "Delete")
+                    {
+                        btn.OnClientClick = "return confirm('¿Realmente deseas eliminar este maestro?');";
+                    }
+                }
+            }
         }
         //**************************************
         protected void Page_Load(object sender, EventArgs e)
@@ -159,30 +157,24 @@ namespace ControlAsistenciaCursosVirtuales.Pages.Maestros
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string conexion = "Data Source=DESKTOP-79POPTI\\SQLEXPRESS;Initial Catalog=ControlAsistenciaCursosVirtuales;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "INSERT INTO Maestros (Nombre, Area, Status) VALUES (@Nombre, @Area, @Status)";
 
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                string query = "INSERT INTO Maestros (Nombre, Area, Status) VALUES (@Nombre, @Area, @Status)";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                    cmd.Parameters.AddWithValue("@Area", txtArea.Text);
-                    cmd.Parameters.AddWithValue("@Status", ddlStatus.SelectedValue);
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            Db.Execute(query,
+                new SqlParameter("@Nombre", txtNombre.Text.Trim()),
+                new SqlParameter("@Area", txtArea.Text.Trim()),
+                new SqlParameter("@Status", ddlStatus.SelectedValue)
+            );
 
             txtNombre.Text = "";
             txtArea.Text = "";
             ddlStatus.SelectedIndex = 0;
+
+            CargarMaestrosActivos();
+            CargarMaestrosEditar();
         }
 
-        
-            
+
+
         protected void gvMaestrosEditar_SelectedIndexChanged(object sender, EventArgs e)
         {
 

@@ -92,12 +92,14 @@
     <asp:Panel ID="pnlEditarEliminar" runat="server" Visible="false">
         <h3>Modificar y Eliminar Maestros</h3>
         <asp:GridView ID="gvMaestrosEditar" runat="server" AutoGenerateColumns="false"
-            DataKeyNames="IdMaestro"
-            OnRowEditing="gvMaestrosEditar_RowEditing"
-            OnRowCancelingEdit="gvMaestrosEditar_RowCancelingEdit"
-            OnRowUpdating="gvMaestrosEditar_RowUpdating"
-            OnRowDeleting="gvMaestrosEditar_RowDeleting"
-            CssClass="table table-bordered" OnSelectedIndexChanged="gvMaestrosEditar_SelectedIndexChanged">
+    DataKeyNames="IdMaestro"
+    OnRowEditing="gvMaestrosEditar_RowEditing"
+    OnRowCancelingEdit="gvMaestrosEditar_RowCancelingEdit"
+    OnRowUpdating="gvMaestrosEditar_RowUpdating"
+    OnRowDeleting="gvMaestrosEditar_RowDeleting"
+    OnRowDataBound="gvMaestrosEditar_RowDataBound"
+    CssClass="table table-bordered"
+    OnSelectedIndexChanged="gvMaestrosEditar_SelectedIndexChanged">
 
             <Columns>
                 <asp:BoundField DataField="IdMaestro" HeaderText="ID" ReadOnly="true" />
